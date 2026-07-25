@@ -6,8 +6,8 @@ This project builds a classification system to predict whether a bank customer w
 
 The project was completed by a team of 4 members, each working on a separate branch:
 
-- **1 member** focused on **preprocessing** — cleaning the raw dataset and preparing it for training
-- **2 members** focused on **training** — building and tuning the best classification models
+- **all members** focused on **dataset finding** and **preprocessing** — cleaning the raw dataset and preparing it for training
+- **3 members** focused on **training** — building and tuning the best classification models and then compare to each other
 - **1 member** focused on **LLM integration** — integrating a large language model into the project
 
 Each member pushed their work to separate branches and the final code was merged into the main branch.
@@ -51,7 +51,7 @@ The class distribution was checked:
 - **7,963 customers stayed** (Exited = 0) — 79.6%
 - **2,037 customers churned** (Exited = 1) — 20.4%
 
-The dataset is moderately imbalanced. However, the team decided **not to balance the dataset** by downsampling. The reasoning was:
+The dataset is moderately imbalanced. However, we decided **not to balance the dataset** by downsampling. The reasoning was:
 
 > Downsampling would mean discarding roughly 6,000 rows of data, which is a very large portion of the dataset. Instead, we chose to keep all data and handle the imbalance at training time using `class_weight='balanced'` in the models.
 
