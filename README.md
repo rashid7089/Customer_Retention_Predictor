@@ -47,13 +47,17 @@ Four classification models were trained with `GridSearchCV` in [`main.ipynb`](ma
 
 ## Results (Test Set)
 
-| Model | Precision | Recall | F1-Score | Accuracy |
+| Model | Threshold | Recall | F1-Score | Accuracy |
 |---|---|---|---|---|
-| Logistic Regression | 48% | 75% | 59% | 79% |
-| SVM | 49% | 77% | 60% | 79% |
-| Decision Tree | 78% | 38% | 51% | 85% |
-| Random Forest | 81% | 46% | 59% | 87% |
+| Logistic Regression | 0.5000 (default) | 75% | 59% | 79% |
+| Logistic Regression | 0.5000 (best) | 75% | 59% | 79% |
+| SVM | 0.5000 (default) | 75% | 59% | 79% |
+| SVM | 0.2137 (best) | 75% | 59% | 79% |
+| Decision Tree | 0.5000 (default) | 40% | 55% | 87% |
+| Decision Tree | 0.3077 (best) | 67% | 63% | 84% |
+| Random Forest | 0.5000 (default) | 46% | 59% | 87% |
+| Random Forest | 0.1988 (best) | 77% | 58% | 78% |
 
-Random Forest achieved the highest accuracy (~87%), though Logistic Regression and SVM showed better recall for the minority churn class.
+Decision Tree benefited most from threshold tuning, jumping from 55% to 63% F1. Random Forest's recall more than doubled (46% → 77%) at the optimal threshold. Logistic Regression and SVM were unaffected — their optimal threshold matched the default.
 
 >  The project includes a full evaluation suite: classification reports, confusion matrices, ROC curves, and precision-recall curves for all models.

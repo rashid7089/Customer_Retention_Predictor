@@ -192,19 +192,23 @@ A combined bar chart compared all models across thresholds. All ROC curves were 
 
 ## Test Results (Final Evaluation)
 
-| Model | Precision | Recall | F1-Score | Accuracy |
+| Model | Threshold | Recall | F1-Score | Accuracy |
 |---|---|---|---|---|
-| Logistic Regression | 48% | 75% | 59% | 79% |
-| SVM | 49% | 77% | 60% | 79% |
-| Decision Tree | 78% | 38% | 51% | 85% |
-| Random Forest | 81% | 46% | 59% | 87% |
+| Logistic Regression | 0.5000 (default) | 75% | 59% | 79% |
+| Logistic Regression | 0.5000 (best) | 75% | 59% | 79% |
+| SVM | 0.5000 (default) | 75% | 59% | 79% |
+| SVM | 0.2137 (best) | 75% | 59% | 79% |
+| Decision Tree | 0.5000 (default) | 40% | 55% | 87% |
+| Decision Tree | 0.3077 (best) | 67% | 63% | 84% |
+| Random Forest | 0.5000 (default) | 46% | 59% | 87% |
+| Random Forest | 0.1988 (best) | 77% | 58% | 78% |
 
 ## Key Observations
 
-- **Random Forest** achieved the highest accuracy (87%), but its recall on the minority churn class was relatively low (46%), meaning it often missed customers who would actually churn.
-- **Logistic Regression** and **SVM** had much higher recall (~75-77%) at the cost of lower precision, making them better for catching potential churners.
-- The **optimal threshold adjustment** using Youden's J statistic improved the F1-score for Decision Tree (from 51.3% to 62.4%) and Random Forest (from 58.6% to 61.9%) by shifting the threshold to favor recall.
-- The default threshold was already near-optimal for Logistic Regression and SVM.
+- **Decision Tree with the optimal threshold (0.3077)** gave the best overall balance — 63% F1-score with 67% recall and 84% accuracy, a massive improvement over its default-threshold performance (55% F1, 40% recall).
+- **Random Forest** saw its default accuracy of 87% drop to 78% when the optimal threshold was applied, but its recall more than doubled from 46% to 77%, showing the threshold trade-off between precision and recall.
+- **Logistic Regression** and **SVM** had the same optimal threshold as the default (0.5 for Logistic Regression, ~0.21 for SVM), confirming the default cutoff was already well-calibrated for these linear models.
+- **SVM** and **Logistic Regression** tied at 79% accuracy / 59% F1 across both thresholds.
 
 # LLM Integration
 
